@@ -1,0 +1,31 @@
+{
+  "DatabaseName": "default",
+  "TableInput": {
+    "Name": "FirstGlueTable",
+    "Description": "FirstGlueTable",
+    "Retention": 0,
+    "StorageDescriptor": {
+      "Columns": [
+        {
+          "Name": "s1",
+          "Type": "string",
+          "Comment": ""
+        }
+      ],
+      "Location": "s3://bucket/prefix/",
+      "InputFormat": "org.apache.hadoop.mapred.TextInputFormat",
+      "OutputFormat": "org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat",
+      "Compressed": false,
+      "SerdeInfo": {
+        "SerializationLibrary": "org.openx.data.jsonserde.JsonSerDe"
+      },
+      "SortColumns": [],
+      "StoredAsSubDirectories": false
+    },
+    "PartitionKeys": [],
+    "TableType": "EXTERNAL_TABLE",
+    "Parameters": {
+      "classification": "json"
+    }
+  }
+}
