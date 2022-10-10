@@ -1,0 +1,21 @@
+stages:
+  - create-table
+
+.template: &aws_job
+  image: "amazon/aws-cli"
+   variables:
+      REGION: us-east-1
+
+.dev-tags:
+  tags:
+    - dev-test
+
+
+CreateTable-dev:
+  stage: create-table
+  <<: *aws_job
+  extends:
+    - .dev-tags
+  script:
+    - aws glue create-table --cli-input-json file://test.json --region us-east-1
+    
